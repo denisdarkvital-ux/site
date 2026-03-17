@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Relatório por Data{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">Relatório por Data</h2>
+
+<form method="GET" class="row mb-4">
+    <div class="col-md-4">
+        <input type="date" name="data" class="form-control" value="{{ data or '' }}">
+    </div>
+
+    <div class="col-md-4">
+        <button class="btn btn-primary">
+            <i class="bi bi-search"></i> Ver Reservas
+        </button>
+    </div>
+</form>
+
+{% if data %}
+<div class="card shadow-sm">
+    <div class="card-header bg-info text-white">
+        <i class="bi bi-calendar-event"></i> Reservas em {{ data }}
+    </div>
+
+    <div class="card-body p-0">
+        <table class="table table-striped table-hover mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th>Recurso</th>
+                    <th>Hora</th>
+                    <th>Observações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for r in reservas %}
+                <tr>
+                    <td>{{ r.recurso_nome }}</td>
+                    <td>{{ r.hora }}</td>
+                    <td>{{ r.observacoes }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="3" class="text-center py-3">
+                        Não existem reservas nesta data.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

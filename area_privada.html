@@ -1,0 +1,49 @@
+<!---ÁREA PRIVADA MELHORARDA - VAI SERTVIR COMO DASHBOARD-->
+
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4">Dashboard</h2>
+
+<div class="alert alert-primary">
+    Bem‑vinda, <strong>{{ session.username |upper}}</strong>!
+</div>
+
+<div class="row">
+
+    <!-- Cartão: Reservas -->
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body text-center">
+                <h5 class="card-title">Reservas</h5>
+                <p class="card-text display-6">{{ total_reservas }}</p>
+                <a href="/reservas" class="btn btn-primary">Ver Reservas</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cartão: Recursos -->
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body text-center">
+                <h5 class="card-title">Recursos</h5>
+                <p class="card-text display-6">{{ total_recursos }}</p>
+                <a href="/criar-reserva" class="btn btn-success">Nova Reserva</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cartão: Utilizadores -->
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body text-center">
+                <h5 class="card-title">Utilizadores</h5>
+                <p class="card-text display-6">{{ total_users }}</p>
+                <a href="/users" class="btn btn-secondary">Gerir Utilizadores</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
